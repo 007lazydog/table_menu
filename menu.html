@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .navg_title {
+            color: white;
+            cursor: pointer;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-weight: 400;
+        }
+            .navg_title:hover {
+                background-color: whitesmoke;
+                color: black;
+            }
+
+        .navg_drop {
+            position: absolute;
+            visibility: hidden;
+            display: block;
+            border: 2px solid gray;
+            border-radius: 6px 6px;
+            margin-top: 0px;
+            margin-left: -21px;
+            background-color:whitesmoke;
+            text-align: left;
+        }
+        .listItem {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            margin-right:18px;
+        }
+
+            .listItem:hover {
+                border: 2px solid red;
+                border-radius:6px 6px
+            }
+
+            .Z_line{margin-bottom:0px;margin-top:0px}
+    </style>
+    <!--navg_drop中的 “margin-top: 0px;”必须设置-->
+</head>
+<body>
+    <div style="color: white; background-color: #650707; width: 1080px; margin: 0 auto; border: 1px solid #650707;border-radius:12px;padding-left:12px">
+        <table>
+            <tr>
+                <th class="navg_title" id="drop_list_1">
+                    安全管理
+                    <hr class="Z_line" />
+                    <ol class="navg_drop" id="drop_list_1_ol">
+                    </ol>
+                </th>
+
+                <th class="navg_title" id="drop_list_2">
+                    后台数据维护管理
+                    <hr class="Z_line" />
+                    <ol class="navg_drop" id="drop_list_2_ol">
+                    </ol>
+                </th>
+
+                <th class="navg_title" id="drop_list_3">
+                    前台信息服务管理
+                    <hr class="Z_line" />
+                    <ol class="navg_drop" id="drop_list_3_ol">
+                    </ol>
+                </th>
+
+            </tr>
+        </table>
+    </div>
+    
+    
+    <hr />
+
+</body>
+</html>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript"> 
+
+    $(document).ready(function () {
+
+        $.get("./menu_list.xml", function (data) {
+            var XD = $.parseXML(data); //必须是规范XML     
+
+            $("#drop_list_1_ol").html(XD.getElementsByTagName("drop_list_1")[0].innerHTML);
+            $("#drop_list_2_ol").html(XD.getElementsByTagName("drop_list_2")[0].innerHTML);
+            $("#drop_list_3_ol").html(XD.getElementsByTagName("drop_list_3")[0].innerHTML);           
+
+        }, "text");
+
+    });  
+     
+          
+
+    $(document).ready(function () {
+        $(".navg_title").on("mouseover", function () {
+            var cur_ol_id = this.id + "_ol";
+            $("#" + cur_ol_id).css("visibility", "visible");           
+        });
+
+        $(".navg_title").on("mouseout", function () {
+            var cur_ol_id = this.id + "_ol";
+            $("#" + cur_ol_id).css("visibility", "hidden");
+        });
+
+    });
+   
+</script>

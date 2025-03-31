@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<M_lists>
+	<drop_list_1>
+		<li class="listItem">人机区分</li>
+		<li class="listItem">登录系统</li>
+	</drop_list_1>
+	<drop_list_2>
+		<li class="listItem">更新密码</li>
+		<li class="listItem">更新菜单</li>
+	</drop_list_2>
+	<drop_list_3>
+		<li class="listItem">浏览菜单文件</li>
+		<li class="listItem">浏览用户</li>
+	</drop_list_3>
+</M_lists>
